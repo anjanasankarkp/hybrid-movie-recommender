@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="details-container">
+
+    <div class="details-card">
+
+        <img
+        src="{{ movie.poster if movie.poster else url_for('static', filename='no_poster.png') }}"
+        class="details-poster">
+
+        <div class="details-info">
+
+            <h1>{{ title }}</h1>
+
+            <p><strong>⭐ IMDb:</strong> {{ movie.imdb }}/10</p>
+
+            <p><strong>📅 Year:</strong> {{ movie.year }}</p>
+
+            <p><strong>🎭 Genre:</strong> {{ movie.genre }}</p>
+
+            <p><strong>🎬 Director:</strong> {{ movie.director }}</p>
+
+            <p><strong>✍ Writer:</strong> {{ movie.writer }}</p>
+
+            <p><strong>🎭 Actors:</strong> {{ movie.actors }}</p>
+
+            <p><strong>⏱ Runtime:</strong> {{ movie.runtime }}</p>
+
+            <p><strong>🏆 Awards:</strong> {{ movie.awards }}</p>
+
+            <p><strong>🌍 Country:</strong> {{ movie.country }}</p>
+
+            <p><strong>🗣 Language:</strong> {{ movie.language }}</p>
+
+            <p><strong>👥 IMDb Votes:</strong> {{ movie.votes }}</p>
+
+            <h3>📖 Plot</h3>
+
+            <p>{{ movie.plot }}</p>
+
+            <br>
+
+            <a href="{{ url_for('home') }}">
+
+                <button class="details-btn">
+
+                    ← Back
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

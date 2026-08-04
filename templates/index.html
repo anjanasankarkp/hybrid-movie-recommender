@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Recommendation System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css')}}">
+
+</head>
+
+<body>
+
+<div class="hero">
+
+    <h1>🎬 FilmNexa</h1>
+
+    <p>
+
+        "Where your next movie begins."
+
+    </p>
+
+</div>
+
+<form id="movieForm" method="POST">
+
+    <div class="search-container">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            name="movie"
+            id="movie"
+            value="{{ movie_name }}"
+            placeholder="Search for a movie..."
+            autocomplete="off" 
+            required>
+
+        <div id="suggestions" class="suggestions-box"></div>
+
+    </div>  
+
+    <br><br>
+    
+    <div class="button-container">
+
+        <button id="discoverBtn" type="submit">
+            Discover Movies
+        </button>
+        
+    </div>
+
+    </form>
+
+    {% if search_message %}
+
+    <div class="search-message">
+        🔍 Showing recommendations for
+        <span class="movie-name">🎬 {{ search_message }}</span>
+    </div>
+
+    {% endif %}
+
+    {% if error_message %}
+
+    <div class="error-message">
+        ❌ {{ error_message }}
+    </div>
+
+    {% endif %}
+
+    {% if searched_movie %}
+
+    <div class="search-info">
+
+        {% if searched_movie.poster %}
+
+        <img
+            src="{{ searched_movie.poster }}"
+            class="searched-poster"
+            alt="{{ matched_movie }}">
+
+        {% else %}
+
+        <img
+            src="{{ url_for('static', filename='no_poster.png') }}"
+            class="searched-poster"
+            alt="No Poster">
+
+        {% endif %}
+
+        <div class="search-details">
+
+            <h2>🎬 Your Pick</h2>
+
+            <h3>{{ matched_movie }}</h3>
+
+            <p>⭐ IMDb {{ searched_movie.imdb }}</p>
+
+            <p>📅 {{ searched_movie.year }}</p>
+
+            <p>🎭 {{ searched_movie.genre }}</p>
+
+        </div>
+
+    </div>
+    {% endif %}
+    {% if recommendations is not none %}
+
+    <h2 class="results-heading">
+         🎯 Recommended for
+        <span class="movie-name">🎬 {{ matched_movie }}</span>
+    </h2>
+
+    <p class="results-subtitle">
+        Picked by FilmNexa just for you.
+    </p>
+
+    {% for title, row in recommendations.iterrows() %}
+
+    <div class="movie-card">
+
+        {% set movie = posters.get(title) %}
+
+        <div class="poster">
+
+            {% if movie and movie["poster"] %}
+
+                <img src="{{ movie['poster'] }}"
+                    class="movie-poster"
+                    alt="{{ title }}">
+
+            {% else %}
+
+                <img src="{{ url_for('static', filename='no_poster.png') }}"
+                     class="movie-poster"
+                    alt="No Poster">
+
+            {% endif %}
+
+        </div>
+
+        <div class="movie-info">
+
+            <h3>
+            🎬 {{ title }}
+            </h3>
+
+           <div class="movie-meta">
+
+                <span>📅 {{ movie["year"] }}</span>
+
+
+                <span>🎭 {{ movie["genre"] }}</span>
+
+
+                <span>⭐ {{ movie["imdb"] }}</span>
+
+            </div>
+
+            <hr class="divider">
+
+            <div class="match-row">
+
+                <span class="match-title">
+                    ✨ FilmNexa Match
+                </span>
+
+                <span class="match-stars">
+
+                    {% for i in range(row["stars"]|int) %}
+                        ★
+                    {% endfor %}
+
+                    {% for i in range(5 - row["stars"]|int) %}
+                        ☆
+                    {% endfor %}
+
+                </span>
+            </div>
+            <p class="ratings">
+            👥 Total Ratings:
+            {{ row["rating_count"]|int }}
+            </p>
+
+            <hr class="divider">
+
+            <div class="movie-actions">
+
+                <a href="{{ url_for('movie_details', title=title) }}">
+
+                    <button class="details-btn">
+
+                        🎬 View Details
+
+                    </button>
+
+                </a>
+
+                <button class="watch-btn">
+                    ❤️ Save to Watchlist   
+                </button>
+
+                <button class="similar-btn">
+                    🔄 Recommend Similar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    <div class="footer-message">
+
+    ✨ Picked by <span>FilmNexa</span> just for you. Happy Watching! 🍿
+
+    </div>
+
+    {% endif %}
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
