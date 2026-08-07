@@ -4,7 +4,9 @@ A personalized movie recommendation engine built on the MovieLens 100K dataset, 
 
 ![FilmNexa Landing Page](docs/landing-page.png)
 
+
 ![FilmNexa Search Result](docs/search-result.png)
+
 
 ![FilmNexa Recommendations](docs/recommendations.png)
 
