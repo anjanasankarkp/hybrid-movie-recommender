@@ -61,3 +61,17 @@ Setup steps:
 ## License
 
 This project is available under the MIT License.
+
+## Note on Pretrained Files
+
+Two generated files are intentionally excluded from this repo via .gitignore, since they are outputs of training rather than source code:
+
+- abc_weights.json — the optimized blend weights produced by the ABC algorithm
+- sgd_momentum_model.pkl — the trained custom SGD+Momentum model
+
+To generate them yourself after cloning:
+
+1. Run: python train_abc_weights.py  (creates abc_weights.json)
+2. Run: python sgd_momentum_svd.py   (creates sgd_momentum_model.pkl)
+
+The app will run without these files using fallback default weights, but recommendation quality and the custom SGD model will not be available until they are generated.
