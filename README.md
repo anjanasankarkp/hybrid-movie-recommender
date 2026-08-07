@@ -1,5 +1,8 @@
 # FilmNexa — Hybrid Movie Recommender System
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue) ![Flask](https://img.shields.io/badge/Flask-black?logo=flask) ![License](https://img.shields.io/badge/License-MIT-green)
+
+
 A personalized movie recommendation engine built on the MovieLens 100K dataset, combining collaborative filtering, swarm intelligence, and fuzzy logic into a multi-source hybrid pipeline. A self-directed learning project built to deepen my understanding of recommender systems.
 
 *Built by Anjana Sankar KP, an MCA student at Cochin University of Science and Technology.*
