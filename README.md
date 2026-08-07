@@ -2,6 +2,12 @@
 
 A personalized movie recommendation engine built on the MovieLens 100K dataset, combining collaborative filtering, swarm intelligence, and fuzzy logic into a multi-source hybrid pipeline. Built as an MCA project at Cochin University of Science and Technology.
 
+![FilmNexa Landing Page](docs/landing-page.png)
+
+![FilmNexa Search Result](docs/search-result.png)
+
+![FilmNexa Recommendations](docs/recommendations.png)
+
 ## Overview
 
 This project blends three complementary recommendation approaches and uses an optimization algorithm to decide how much to trust each one, per user:
