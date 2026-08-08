@@ -7,6 +7,8 @@ A personalized movie recommendation engine built on the MovieLens 100K dataset, 
 
 *Built by Anjana Sankar KP, an MCA student at Cochin University of Science and Technology.*
 
+**Skills demonstrated:** Collaborative Filtering · Matrix Factorization (SVD) · Content-Based Filtering (TF-IDF) · Swarm Intelligence (ABC) · Fuzzy Logic · Full-Stack Deployment (Flask)
+
 ![FilmNexa Landing Page](docs/landing-page.png)
 
 
@@ -71,6 +73,12 @@ Setup steps:
 - static/ — CSS, JS, images
 - templates/ — HTML templates
 
+## Future Improvements
+
+- Test on a larger, more recent dataset beyond MovieLens 100K
+- Add user authentication and persistent user profiles
+- Deploy to a public URL for live demo access
+
 ## License
 
 This project is available under the MIT License.
@@ -88,3 +96,8 @@ To generate them yourself after cloning:
 2. Run: python sgd_momentum_svd.py   (creates sgd_momentum_model.pkl)
 
 The app will run without these files using fallback default weights, but recommendation quality and the custom SGD model will not be available until they are generated.
+
+## Author
+
+**Anjana Sankar KP** — MCA Student, Cochin University of Science and Technology
+[LinkedIn](https://www.linkedin.com/in/anjanasankarkp) · [GitHub](https://github.com/anjanasankarkp)
